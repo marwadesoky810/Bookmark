@@ -16,7 +16,6 @@ if (localStorage.getItem("bookmarksList")) {
 }
 
 
-
 function displayBookmark(indexOfWebsite) {
   var userURL = bookmarks[indexOfWebsite].siteURL;
   var httpsRegex = /^https?:\/\//g;
@@ -55,7 +54,6 @@ function displayBookmark(indexOfWebsite) {
             `;
   tableContent.innerHTML += newBookmark;
 
- 
 
   deleteBtns = document.querySelectorAll(".btn-delete");
   if (deleteBtns) {
@@ -66,7 +64,6 @@ function displayBookmark(indexOfWebsite) {
     }
   }
 
-  
 
   visitBtns = document.querySelectorAll(".btn-visit");
   if (visitBtns) {
@@ -170,6 +167,7 @@ function closeModal() {
 }
 
 
+
 closeBtn.addEventListener("click", closeModal);
 
 document.addEventListener("keydown", function (e) {
@@ -183,6 +181,8 @@ document.addEventListener("click", function (e) {
     closeModal();
   }
 });
+
+
 
 updateBtns = document.querySelectorAll(".btn-update");
   if (updateBtns) {
@@ -198,22 +198,22 @@ function updateBookmark(e) {
     var updatedName = prompt("Enter updated site name:", bookmarks[updateIndex].siteName);
     var updatedURL = prompt("Enter updated site URL:", bookmarks[updateIndex].siteURL);
   
-  
+    
     if (updatedName && updatedURL) {
       bookmarks[updateIndex].siteName = capitalize(updatedName);
       bookmarks[updateIndex].siteURL = updatedURL;
       localStorage.setItem("bookmarksList", JSON.stringify(bookmarks));
-      tableContent.innerHTML = ""; // Clear the table
+      tableContent.innerHTML = ""; 
       for (var k = 0; k < bookmarks.length; k++) {
         displayBookmark(k);
       }
     } else {
-     
+      
       alert("Update canceled or invalid input.");
     }
   }
   
- 
+
   var nameRegex = /^\w{3,}(\s+\w+)*$/;
   var urlRegex = /^(https?:\/\/)?(w{3}\.)?\w+\.\w{2,}\/?(:\d{2,5})?(\/\w+)*$/;
   
@@ -236,7 +236,7 @@ function updateBookmark(e) {
     }
   }
   
-
+ 
   function closeModal() {
     boxModal.classList.add("d-none");
   }
